@@ -12,7 +12,7 @@ public class dbconnect {
 		
 
 		Class.forName("org.postgresql.Driver");
-		conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs623project", "postgres", "Dheeraj@123");
+		conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cs623project", "postgres", "Naveen@123");
 
 		conn.setAutoCommit(false); // as we are updating to table, we are setting the property of atomicity
 
@@ -21,14 +21,14 @@ public class dbconnect {
 			if (conn != null) { // the condition is put up to just check the connection
 				System.out.println("ok");
 			} else {
-				System.out.println("nok");
+				System.out.println("notok");
 			}
 
 			stmt1 = conn.createStatement();
 			
 			
 			String sql1 = "INSERT INTO depot(depid,addr,volume) VALUES('d100','Chicago',100)";
-			String sql2 = "INSERT INTO stock(prodid,depid,quantity) VALUES('p1','100',100)";
+			String sql2 = "INSERT INTO stock(prodid,depid,quantity) VALUES('p1','d100',100)";
 			stmt1.executeUpdate(sql1);
 			stmt1.executeUpdate(sql2);
 			
